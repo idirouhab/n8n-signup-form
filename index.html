@@ -3,69 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sesión Q&A de n8n - Regístrate</title>
+    <title>Únete a Nuestra Sesión de Q&A sobre n8n</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="form-wrapper">
-            <div class="header">
-                <div class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="#EA4B71"/>
-                        <path d="M12 20L18 14L22 18L28 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 28L18 22L22 26L28 20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Floating particles -->
+<div class="particle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+<div class="particle" style="top: 20%; left: 80%; animation-delay: 2s;"></div>
+<div class="particle" style="top: 60%; left: 20%; animation-delay: 4s;"></div>
+<div class="particle" style="top: 80%; left: 70%; animation-delay: 6s;"></div>
+<div class="particle" style="top: 30%; left: 50%; animation-delay: 8s;"></div>
+<div class="particle" style="top: 70%; left: 40%; animation-delay: 10s;"></div>
+<div class="particle" style="top: 40%; left: 30%; animation-delay: 12s;"></div>
+<div class="particle" style="top: 50%; left: 90%; animation-delay: 14s;"></div>
+
+<div class="container">
+    <div class="form-card">
+        <div id="formContainer">
+            <h1>Únete a Nuestra Sesión Gratuita de Q&A sobre n8n</h1>
+            <p class="subtitle">Obtén respuestas a tus preguntas de automatización</p>
+
+            <div class="host-info">
+                <div class="host-badge">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
                     </svg>
+                    <span>Sesión impartida por <strong>Idir Ouhab</strong>, Solutions Engineer en n8n</span>
                 </div>
-                <h1>Únete a Nuestra Sesión Gratuita de Q&A sobre n8n</h1>
-                <p>Obtén respuestas a tus preguntas de automatización</p>
             </div>
 
-            <form id="signupForm" class="signup-form">
+            <form id="registrationForm">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
-                    <input type="text" id="name" name="name" required>
-                    <span class="error-message" id="nameError"></span>
+                    <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Tu nombre completo"
+                            required
+                    >
+                    <div class="error-message" id="nameError">El nombre es obligatorio</div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                    <span class="error-message" id="emailError"></span>
+                    <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="tu@email.com"
+                            required
+                    >
+                    <div class="error-message" id="emailError">El correo electrónico es obligatorio</div>
                 </div>
 
                 <div class="form-group">
                     <label for="country">País</label>
-                    <div class="country-autocomplete">
-                        <input type="text" id="country" name="country" placeholder="Escribe tu país..." autocomplete="country" required>
-                        <div class="country-suggestions" id="countrySuggestions"></div>
+                    <div class="select-wrapper">
+                        <input
+                                type="text"
+                                id="country"
+                                name="country"
+                                class="select-input"
+                                placeholder="Escribe para buscar tu país"
+                                autocomplete="off"
+                                required
+                        >
+                        <div class="select-dropdown" id="countryDropdown"></div>
                     </div>
-                    <span class="error-message" id="countryError"></span>
+                    <div class="error-message" id="countryError">Por favor selecciona tu país</div>
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
-                    <span class="btn-text">¡Regístrame!</span>
-                    <div class="btn-loading" id="btnLoading">
-                        <div class="spinner"></div>
-                    </div>
+                    <span id="btnText">Registrarme Ahora</span>
                 </button>
             </form>
-
-            <div class="success-message" id="successMessage">
-                <div class="success-icon">✓</div>
-                <h2>¡Ya estás registrado!</h2>
-                <p>Te enviaremos un correo con todos los detalles sobre la sesión de Q&A.</p>
-            </div>
         </div>
 
-        <div class="background-decoration">
-            <div class="decoration-1"></div>
-            <div class="decoration-2"></div>
-            <div class="decoration-3"></div>
+        <div class="success-container" id="successContainer">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <h2 class="success-title">¡Registro Exitoso!</h2>
+            <p class="success-message">
+                Te has registrado correctamente para la sesión de Q&A sobre n8n.<br>
+                No te pierdas más contenido sobre automatización:
+            </p>
+            <a href="https://www.youtube.com/@Prompt_and_Play" target="_parent" rel="noopener noreferrer" class="youtube-btn">
+                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Seguir en YouTube
+            </a>
         </div>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
