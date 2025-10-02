@@ -3,8 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Únete a Nuestra Sesión de Q&A sobre n8n</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sesión de Q&A sobre n8n - Registro Cerrado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0CCBFF 0%, #FF6B6B 50%, #0CCBFF 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .particle::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px 30px;
+            box-shadow:
+                    0 8px 32px rgba(31, 38, 135, 0.37),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(0);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .closed-message {
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 0.3s both;
+        }
+
+        .closed-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF9472 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s both;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .closed-icon svg {
+            width: 32px;
+            height: 32px;
+            color: #ffffff;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .highlight-text {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 17px;
+            margin: 24px 0;
+        }
+
+        .youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: #ff0000;
+            border: none;
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+            }
+        }
+
+        .youtube-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.3);
+            background: #cc0000;
+        }
+
+        .youtube-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 <!-- Floating particles -->
@@ -19,80 +239,21 @@
 
 <div class="container">
     <div class="form-card">
-        <div id="formContainer">
-            <h1>Únete a Nuestra Sesión Gratuita de Q&A sobre n8n</h1>
-            <p class="subtitle">Obtén respuestas a tus preguntas de automatización</p>
-
-            <div class="host-info">
-                <div class="host-badge">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    <span>Sesión impartida por <strong>Idir Ouhab</strong>, Solutions Engineer en n8n</span>
-                </div>
-            </div>
-
-            <form id="registrationForm">
-                <div class="form-group">
-                    <label for="name">Nombre Completo</label>
-                    <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Tu nombre completo"
-                            required
-                    >
-                    <div class="error-message" id="nameError">El nombre es obligatorio</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="tu@email.com"
-                            required
-                    >
-                    <div class="error-message" id="emailError">El correo electrónico es obligatorio</div>
-                </div>
-
-                <div class="form-group">
-                    <label for="country">País</label>
-                    <div class="select-wrapper">
-                        <input
-                                type="text"
-                                id="country"
-                                name="country"
-                                class="select-input"
-                                placeholder="Escribe para buscar tu país"
-                                autocomplete="off"
-                                required
-                        >
-                        <div class="select-dropdown" id="countryDropdown"></div>
-                    </div>
-                    <div class="error-message" id="countryError">Por favor selecciona tu país</div>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submitBtn">
-                    <span id="btnText">Registrarme Ahora</span>
-                </button>
-            </form>
-        </div>
-
-        <div class="success-container" id="successContainer">
-            <div class="success-icon">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="20 6 9 17 4 12"></polyline>
+        <h1>Sesión de Q&A sobre n8n</h1>
+        <div class="closed-message">
+            <div class="closed-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
                 </svg>
             </div>
-            <h2 class="success-title">¡Registro Exitoso!</h2>
-            <p class="success-message">
-                Te has registrado correctamente para la sesión de Q&A sobre n8n.<br>
-                No te pierdas más contenido sobre automatización:
-            </p>
-            <a href="https://www.youtube.com/@Prompt_and_Play" target="_parent" rel="noopener noreferrer" class="youtube-btn">
+            <h2>¡Gracias por tu interés!</h2>
+            <p>Hemos alcanzado el número máximo de asistentes para esta sesión.</p>
+            <p class="highlight-text">El registro está cerrado.</p>
+            <p>Te invitamos a seguirnos en YouTube para no perderte futuras sesiones y contenido exclusivo sobre n8n y automatización:</p>
+
+            <a href="https://www.youtube.com/@Prompt_and_Play" target="_blank" rel="noopener noreferrer" class="youtube-btn">
                 <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
@@ -101,7 +262,5 @@
         </div>
     </div>
 </div>
-
-<script src="script.js"></script>
 </body>
 </html>
